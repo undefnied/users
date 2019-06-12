@@ -1,13 +1,21 @@
 // lib/app.ts
-import express = require('express');
+import dotenv from "dotenv";
+import express from 'express';
+
+import apiRouter from './src/routes/Api';
+
+// initialize configuration
+dotenv.config();
+
+const port = process.env.SERVER_PORT;
+const apiPrefix = process.env.API_PREFIX;
+const version = process.env.VERSION;
 
 // Create a new express application instance
 const app: express.Application = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.use(`/${apiPrefix}/${version}`, apiRouter);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(port, function () {
+  console.log('Users app listening on port 3000!');
 });
