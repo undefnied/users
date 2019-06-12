@@ -1,6 +1,7 @@
 // lib/app.ts
 import dotenv from "dotenv";
 import express from "express";
+import * as bodyParser from "body-parser";
 
 import { Database } from "./src/models/Database";
 import apiRouter from "./src/routes/Api";
@@ -16,6 +17,14 @@ const version = process.env.VERSION;
 const app: express.Application = express();
 
 Database.init();
+
+app.use(bodyParser.json());
+
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
 
 app.use(`/${apiPrefix}/${version}`, apiRouter);
 
