@@ -10,7 +10,7 @@
     "@types/mongoose": "^5.5.6",
     "bluebird": "^3.5.5",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.5.15",
     "ts-node-dev": "^1.0.0-pre.40",
     "typescript": "^3.5.1"
